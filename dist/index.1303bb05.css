@@ -1,0 +1,145 @@
+body {
+  color: #fff;
+  background-image: url("poker-table-background-green-color_47243-1068.f720511b.avif");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.card {
+  margin-left: -45px;
+  padding: 5px;
+  position: relative;
+}
+
+.dealer {
+  z-index: -2;
+  background-color: #acacac1a;
+  border: 2px solid #fff;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  margin-left: 20%;
+  margin-right: 20%;
+  font-size: 20px;
+  display: flex;
+  overflow: hidden;
+}
+
+.dealer-cards {
+  z-index: 0;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding-left: 10%;
+  display: flex;
+}
+
+.container {
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.player {
+  z-index: -2;
+  background-color: #acacac1a;
+  border: 2px solid #fff;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 20px 5%;
+}
+
+.player-text {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.dealer--card {
+  width: 100px;
+}
+
+.player--card {
+  width: 75px;
+}
+
+.btn {
+  color: #fff;
+  cursor: pointer;
+  background-color: #007bff;
+  border: none;
+  margin: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
+.btn--roll {
+  background-color: #28a745;
+}
+
+.btn--stick {
+  background-color: #dc3545;
+}
+
+.btn--new {
+  background-color: #ffc107;
+}
+
+.middle {
+  flex-direction: column;
+  justify-content: center;
+  display: flex;
+}
+
+.form-check {
+  align-items: center;
+  margin-bottom: 10px;
+  margin-left: 15%;
+  display: flex;
+}
+
+.cards {
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding-left: 50%;
+  display: flex;
+}
+
+.winner-message {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  display: flex;
+}
+
+.win {
+  background-color: #28a745;
+}
+
+.lose {
+  background-color: #dc3545;
+}
+
+.player--active {
+  background-color: #00000080;
+}
+
+.hidden {
+  display: none;
+}
+
+.card-back {
+  z-index: -1;
+}
+/*# sourceMappingURL=index.1303bb05.css.map */

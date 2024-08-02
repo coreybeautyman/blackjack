@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/index.1303bb05.css">
+
+    <title>Black Jack</title>
+  </head>
+  <body>
+    <main>
+      <section class="dealer">
+        <div class="dealer-cards">
+          <img src="/0_1.819e6846.png" alt="card" class="card dealer--card dealer-card-1 card-back">
+          <img src="/0_1.819e6846.png" alt="card" class="card dealer--card dealer-card-2 card-back">
+        </div>
+        <h1 class="dealer-total">0</h1>
+      </section>
+      <section class="container">
+        <section class="player player--01 player--active">
+          <div class="player-text">
+            <h2 class="name" id="name--1">Player 1</h2>
+            <p class="total-label">Total</p>
+            <p class="total-score player1-total-score">0</p>
+            <p class="current-label">Current</p>
+            <p class="current-score player01-current-score" id="current--1">0</p>
+          </div>
+          <div class="cards player01--cards">
+          <img src="/0_1.819e6846.png" alt="card" class="card player--card player01-card-1 player01-card">
+          <img src="/0_1.819e6846.png" alt="card" class="card player--card player01-card-2 player01-card">
+            </div>
+        </section>
+        <section class="middle">
+          <div class="form-check">
+            <input type="radio" class="form-check-input" name="players" id="onePlayer" value="1" checked="">
+            <label class="form-check-label" for="onePlayer">1 Player</label>
+          </div>
+          
+          <div class="form-check">
+            <input type="radio" class="form-check-input" name="players" id="twoPlayers" value="2">
+            <label class="form-check-label" for="twoPlayers">2 Players</label>
+          </div>
+          
+          
+          <div class="winner-message win hidden">
+            <h1 class="winner-message-text">Player 1 wins</h1>
+          </div>
+          <button class="btn btn--hit">Hit</button>
+          <button class="btn btn--stick">Stick</button>
+          <button class="btn btn--new">New game</button>
+        </section>
+
+        <section class="player player--02">
+          <div class="player-text">
+            <h2 class="name" id="name--2">Player 2</h2>
+            <p class="toatal-label">Total</p>
+            <p class="total-score player2-total-score">0</p>
+            <p class="current-label">Current</p>
+            <p class="current-score player02-current-score">0</p>
+          </div>
+          <div class="cards player02--cards">
+            <img src="/0_1.819e6846.png" alt="card" class="card player--card player02-card card-back">
+            <img src="/0_1.819e6846.png" alt="card" class="card player--card player02-card card-back">
+            
+          </div>
+        </section>
+      </section>
+    </main>
+    <script src="/index.672d4772.js"></script>
+  <script src="/BlackJack.3464ddca.js"></script></body>
+</html>

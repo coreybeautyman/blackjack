@@ -1,0 +1,145 @@
+body {
+  background-image: url(background/poker-table-background-green-color_47243-1068.avif);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: white;
+}
+.card {
+  position: relative;
+  margin-left: -45px;
+ padding: 5px;
+}
+.dealer {
+  height: 300px;
+  border: 2px solid white;
+  background-color: rgba(172, 172, 172, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  margin-left: 20%;
+  margin-right: 20%;
+  overflow: hidden;
+  z-index: -2;
+}
+.dealer-cards {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+  padding-left: 10%;
+  z-index: 0
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.player {
+  border: 2px solid white;
+  padding: 20px;
+  padding-left: 5%;
+  padding-right: 5%;
+  margin: 10px;
+  border-radius: 5px;
+  background-color: rgba(172, 172, 172, 0.1);
+  z-index: -2;
+}
+
+.player-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.dealer--card {
+  width: 100px;
+}
+
+.player--card {
+  width: 75px;
+}
+
+/* Add styles for buttons */
+.btn {
+  background-color: #007bff; /* Blue background color */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.btn:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Add styles for the "Hit," "Stick," and "New Game" buttons */
+.btn--roll {
+  background-color: #28a745; /* Green */
+}
+
+.btn--stick {
+  background-color: #dc3545; /* Red */
+}
+
+.btn--new {
+  background-color: #ffc107; /* Yellow */
+}
+
+.middle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
+}
+.form-check {
+  display: flex;
+  align-items: center; /* Align items vertically */
+  margin-bottom: 10px;
+  margin-left: 15%;
+}
+.cards {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding-left: 50%;
+}
+
+.winner-message {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  height: 30px;
+}
+
+.win {
+  background-color: #28a745;
+}
+
+.lose {
+  background-color: #dc3545;
+}
+
+.player--active {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.hidden {
+  display: none;
+}
+
+.card-back {
+  z-index: -1; /* Set a lower z-index for the back of the card */
+}
