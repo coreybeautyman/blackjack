@@ -36,6 +36,7 @@ const newGameBtn = document.querySelector(".btn--new");
 const onePlayer = document.getElementById("onePlayer");
 const twoPlayer = document.getElementById("twoPlayers");
 const winnerMessage = document.querySelector(".winner-message");
+// card selector
 // set up global variables
 let activePlayer = 1;
 let player01CurrentScore = 0;
@@ -65,12 +66,12 @@ function newGame() {
     dealerCardsArray = originalDealerCardsArray;
     player01CardsArray = originalCardsArray;
     player01cardDiv.innerHTML = `<img
-  src="cards/0_1.png"
+  src="http://127.0.0.1:5500/cards/0_1.png"
   alt="card"
   class="card player--card player01-card-1 player01-card card-back"
 />
 <img
-  src="cards/0_1.png"
+  src="http://127.0.0.1:5500/cards/0_1.png"
   alt="card"
   class="card player--card player01-card-2 player01-card card-back"
 />`;
@@ -80,26 +81,26 @@ function newGame() {
   class="card dealer--card dealer-card-1" 
   />
 <img
- src="cards/0_1.png" 
+ src="http://127.0.0.1:5500/cards/0_1.png" 
  alt="card" 
  class="card dealer--card dealer-card-2 card-back"
   />`;
     player02cardDiv.innerHTML = `<img
-  src="cards/0_1.png"
+  src="http://127.0.0.1:5500/cards/0_1.png"
   alt="card"
   class="card player--card player02-card-1 player02-card card-back"
 />
 <img
-  src="cards/0_1.png"
+  src="http://127.0.0.1:5500/cards/0_1.png"
   alt="card"
   class="card player--card player02-card-2 player02-card card-back"
 />`;
     dealerCardsArray[0].src = dealerCard1.src;
-    dealerCardsArray[1].src = "cards/0_1.png";
-    player01CardsArray[0].src = "cards/0_1.png";
-    player01CardsArray[1].src = "cards/0_1.png";
-    player02CardsArray[0].src = "cards/0_1.png";
-    player02CardsArray[1].src = "cards/0_1.png";
+    dealerCardsArray[1].src = "http://127.0.0.1:5500/cards/0_1.png";
+    player01CardsArray[0].src = "http://127.0.0.1:5500/cards/0_1.png";
+    player01CardsArray[1].src = "http://127.0.0.1:5500/cards/0_1.png";
+    player02CardsArray[0].src = "http://127.0.0.1:5500/cards/0_1.png";
+    player02CardsArray[1].src = "http://127.0.0.1:5500/cards/0_1.png";
     player01Card1 = document.querySelector(".player01-card-1");
     player01Card2 = document.querySelector(".player01-card-2");
     player01CardsArray = Array.from(player01Cards);

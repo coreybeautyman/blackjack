@@ -1,55 +1,79 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  min-width: 790px;
+  /* overflow-x: hidden; Prevent horizontal scrolling */
+}
+
 body {
   background-image: url(background/poker-table-background-green-color_47243-1068.avif);
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center;
   background-attachment: fixed;
+  min-height: 100vh;
   color: white;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
 }
-.card {
-  position: relative;
-  margin-left: -45px;
- padding: 5px;
+
+.title {
+  display: flex;
+  justify-content: center;
+  margin-top: 70px;
+  margin-bottom: 40px;
+
+  font-weight: bold;
+  text-decoration: underline;
+  text-decoration-thickness: 5px;
+  text-underline-offset: 10px;
 }
+
+.dealer-cont {
+  display: flex;
+  justify-content: center;
+  margin: 3% 0;
+}
+
 .dealer {
-  height: 300px;
   border: 2px solid white;
   background-color: rgba(172, 172, 172, 0.1);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   font-size: 20px;
-  margin-left: 20%;
-  margin-right: 20%;
-  overflow: hidden;
   z-index: -2;
+  width: 50%;
 }
 .dealer-cards {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: row;
-  width: 100%;
-  padding-left: 10%;
-  z-index: 0
+  margin-top: 10px;
+  flex-wrap: wrap;
+  margin: 20px 10px;
 }
 
-.container {
+.dealer-total {
   display: flex;
-  flex-direction: row;
   justify-content: center;
   align-items: center;
 }
 
+.container {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 5%;
+  min-width: 685px;
+}
+
 .player {
   border: 2px solid white;
-  padding: 20px;
-  padding-left: 5%;
-  padding-right: 5%;
-  margin: 10px;
-  border-radius: 5px;
+  width: 35%;
   background-color: rgba(172, 172, 172, 0.1);
   z-index: -2;
+  min-width: 184px;
 }
 
 .player-text {
@@ -57,71 +81,90 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 20px;
+}
+.current-div {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
 }
 
+.total-div {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
 .dealer--card {
   width: 100px;
+  margin: 2px;
 }
 
 .player--card {
   width: 75px;
+  margin: 2px;
 }
 
-/* Add styles for buttons */
+.name {
+  margin-bottom: 20px;
+}
+
 .btn {
-  background-color: #007bff; /* Blue background color */
+  /* background-color: #007bff; */
   color: white;
   border: none;
   padding: 10px 20px;
-  margin: 5px;
+  margin: 5px 20px;
   cursor: pointer;
   font-size: 16px;
 }
 
-.btn:hover {
-  background-color: #0056b3; /* Darker blue on hover */
-}
-
-/* Add styles for the "Hit," "Stick," and "New Game" buttons */
-.btn--roll {
-  background-color: #28a745; /* Green */
-}
-
-.btn--stick {
-  background-color: #dc3545; /* Red */
-}
-
-.btn--new {
-  background-color: #ffc107; /* Yellow */
-}
-
-.middle {
+.buttons {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* align-items: center; */
+  margin-top: 30px;
 }
-.form-check {
-  display: flex;
-  align-items: center; /* Align items vertically */
-  margin-bottom: 10px;
-  margin-left: 15%;
+
+/* .btn:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+} */
+
+.btn--hit {
+  background-color: rgb(0, 123, 255);
 }
+.btn--hit:hover {
+  background-color: rgb(0, 123, 255, 0.8);
+}
+
+.btn--stick {
+  background-color: rgb(220, 53, 69);
+}
+.btn--stick:hover {
+  background-color: rgb(220, 53, 69, 0.8);
+}
+
+.btn--new {
+  background-color: rgb(255, 193, 7);
+}
+.btn--new:hover {
+  background-color: rgb(255, 193, 7, 0.8);
+}
+
 .cards {
   display: flex;
-  flex-direction: row;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  padding-left: 50%;
+  margin: 20px 10px;
 }
 
 .winner-message {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  height: 30px;
+  margin: 15px;
+  padding: 5px;
 }
 
 .win {
@@ -141,5 +184,122 @@ body {
 }
 
 .card-back {
-  z-index: -1; /* Set a lower z-index for the back of the card */
+  z-index: -1;
+}
+
+.middle-cont {
+  --radius: 8px;
+  --border: 4px;
+  --height: 40px;
+  --speed: 0.25s;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  margin: 10px;
+  white-space: nowrap;
+}
+
+.tabs {
+  height: var(--height);
+  display: grid;
+  grid-auto-flow: column;
+  background: hsl(0 0% 0%);
+  border-radius: var(--radius);
+  grid-auto-columns: 1fr;
+  position: relative;
+  border: var(--border) solid hsl(0 0% 0%);
+}
+
+.tabs {
+  --ease: linear(
+    0,
+    0.1641 3.52%,
+    0.311 7.18%,
+    0.4413 10.99%,
+    0.5553 14.96%,
+    0.6539 19.12%,
+    0.738 23.5%,
+    0.8086 28.15%,
+    0.8662 33.12%,
+    0.9078 37.92%,
+    0.9405 43.12%,
+    0.965 48.84%,
+    0.9821 55.28%,
+    0.992 61.97%,
+    0.9976 70.09%,
+    1
+  );
+}
+
+.tabs > .input,
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.tabs:has(:checked:nth-of-type(1)) {
+  --active: 0;
+}
+.tabs:has(:checked:nth-of-type(2)) {
+  --active: 1;
+}
+.tabs:has(:checked:nth-of-type(3)) {
+  --active: 2;
+}
+.tabs:has(:checked:nth-of-type(4)) {
+  --active: 3;
+}
+
+.tabs :checked + .label {
+  --highlight: 1;
+}
+
+.tabs:has(.input:nth-of-type(2)) {
+  --count: 2;
+}
+
+.tabs .label {
+  padding: 0 clamp(10px, 10px + 10px, 20px);
+  cursor: pointer;
+  text-align: center;
+  height: 100%;
+  display: grid;
+  border-radius: calc(var(--radius) - var(--border));
+  place-items: center;
+  color: hsl(0 0% 100% / calc(0.5 + var(--highlight, 0)));
+  transition: background, color;
+  transition-duration: 0.25s;
+  transition-timing-function: var(--ease, ease);
+}
+
+.input:not(:checked) + .label:hover {
+  --highlight: 0.35;
+  background: hsl(0 0% 20%);
+}
+
+.tabs::after {
+  pointer-events: none;
+  content: '';
+  width: calc(100% / var(--count));
+  height: 100%;
+  background: hsl(0 0% 100%);
+  position: absolute;
+  border-radius: calc(var(--radius) - var(--border));
+  mix-blend-mode: difference;
+  translate: calc(var(--active, 0) * 100%) 0;
+  transition: translate, outline-color;
+  transition-duration: var(--speed);
+  transition-timing-function: var(--ease, ease);
+  outline: 2px solid transparent;
+}
+
+.tabs:has(:focus-visible)::after {
+  outline-color: red;
 }

@@ -8,64 +8,107 @@
     <title>Black Jack</title>
   </head>
   <body>
-    <main>
-      <section class="dealer">
-        <div class="dealer-cards">
-          <img src="cards/0_1.png" alt="card" class="card dealer--card dealer-card-1 card-back" />
-          <img src="cards/0_1.png" alt="card" class="card dealer--card dealer-card-2 card-back" />
-        </div>
-        <h1 class="dealer-total">0</h1>
-      </section>
+    <main>  
+      <h1 class="title">Black Jack</h1> 
+      <div class="dealer-cont">
+        <section class="dealer">
+          <div class="dealer-cards">
+            <img
+              src="http://127.0.0.1:5500/cards/0_1.png"
+              alt="card"
+              class="card dealer--card dealer-card-1 card-back"
+            />
+            <img
+              src="http://127.0.0.1:5500/cards/0_1.png"
+              alt="card"
+              class="card dealer--card dealer-card-2 card-back"
+            />
+          </div>
+          <h1 class="dealer-total">0</h1>
+        </section>
+      </div>
       <section class="container">
         <section class="player player--01 player--active">
+
           <div class="player-text">
             <h2 class="name" id="name--1">Player 1</h2>
+            <div class="player-score-cont">
+              <div class="total-div">
             <p class="total-label">Total</p>
-            <p class="total-score player1-total-score">0</p>
+            <p class="total-score player1-total-score">0</p></div>
+            <div class="current-div">
             <p class="current-label">Current</p>
-            <p class="current-score player01-current-score" id="current--1">0</p>
+            <p class="current-score player01-current-score" id="current--1">
+              0
+            </p></div></div>
           </div>
+
           <div class="cards player01--cards">
-          <img
-            src="cards/0_1.png"
-            alt="card"
-            class="card player--card player01-card-1 player01-card"
-          />
-          <img
-            src="cards/0_1.png"
-            alt="card"
-            class="card player--card player01-card-2 player01-card"
-          />
-            </div>
+            <img
+              src="http://127.0.0.1:5500/cards/0_1.png"
+              alt="card"
+              class="card player--card player01-card-1 player01-card"
+            />
+            <img
+              src="http://127.0.0.1:5500/cards/0_1.png"
+              alt="card"
+              class="card player--card player01-card-2 player01-card"
+            />
+          </div>
         </section>
         <section class="middle">
-          <div class="form-check">
-            <input type="radio" class="form-check-input" name="players" id="onePlayer" value="1" checked>
-            <label class="form-check-label" for="onePlayer">1 Player</label>
+          <div class="middle-cont">
+              <div class="tabs">
+                <input
+                  checked=""
+                  value="1"
+                  name="players"
+                  id="onePlayer"
+                  type="radio"
+                  class="input"
+                />
+                <label for="onePlayer" class="label">1 Player</label>
+                <input
+                  value="2"
+                  name="players"
+                  id="twoPlayers"
+                  type="radio"
+                  class="input"
+                />
+                <label for="twoPlayers" class="label">2 Players</label>
+              
+              </div>
+           </div>
+
+            </div>
+
+            <div class="winner-message win hidden">
+              <h1 class="winner-message-text">Player 1 wins</h1>
+            </div>
+            <div class="buttons">
+              <button class="btn btn--hit">Hit</button>
+              <button class="btn btn--stick">Stick</button>
+              <button class="btn btn--new">New game</button>
+            </div>
           </div>
-          
-          <div class="form-check">
-            <input type="radio" class="form-check-input" name="players" id="twoPlayers" value="2">
-            <label class="form-check-label" for="twoPlayers">2 Players</label>
-          </div>
-          
-          
-          <div class="winner-message win hidden">
-            <h1 class="winner-message-text">Player 1 wins</h1>
-          </div>
-          <button class="btn btn--hit">Hit</button>
-          <button class="btn btn--stick">Stick</button>
-          <button class="btn btn--new">New game</button>
         </section>
 
         <section class="player player--02">
+
           <div class="player-text">
             <h2 class="name" id="name--2">Player 2</h2>
-            <p class="toatal-label">Total</p>
-            <p class="total-score player2-total-score">0</p>
+            <div class="player-score-cont">
+              <div class="total-div">
+            <p class="total-label">Total</p>
+            <p class="total-score player2-total-score">0</p></div>
+            <div class="current-div">
             <p class="current-label">Current</p>
-            <p class="current-score player02-current-score">0</p>
+            <p class="current-score player02-current-score" id="current--2">
+              0
+            </p></div></div>
           </div>
+
+
           <div class="cards player02--cards">
             <img
               src="cards/0_1.png"
@@ -77,7 +120,6 @@
               alt="card"
               class="card player--card player02-card card-back"
             />
-            
           </div>
         </section>
       </section>
