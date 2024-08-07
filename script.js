@@ -42,8 +42,6 @@ const onePlayer = document.getElementById('onePlayer');
 const twoPlayer = document.getElementById('twoPlayers');
 const winnerMessage = document.querySelector('.winner-message');
 
-// card selector
-
 // set up global variables
 let activePlayer = 1;
 let player01CurrentScore = 0;
@@ -51,7 +49,9 @@ let player02CurrentScore = 0;
 let player01TotalScore = 0;
 let player02TotalScore = 0;
 let dealerCurrentScore;
-
+let player01AcesInHandCountedAsEleven = 0;
+let player02AcesInHandCountedAsEleven = 0;
+let dealerAcesInHandCountedAsEleven = 0;
 let noOfPlayers = 1;
 
 // game start up initialisation
@@ -71,6 +71,9 @@ function newGame() {
   player02current.textContent = 0;
   player02CurrentScore = 0;
   player01CurrentScore = 0;
+  player01AcesInHandCountedAsEleven = 0;
+  player02AcesInHandCountedAsEleven = 0;
+  dealerAcesInHandCountedAsEleven = 0;
   winnerMessage.classList.add('hidden');
 
   dealerCard1.src = randomCard();
@@ -130,7 +133,7 @@ function newGame() {
   dealerCard1 = document.querySelector('.dealer-card-1');
   dealerCard2 = document.querySelector('.dealer-card-2');
   dealerCardsArray = Array.from(dealerCards);
-  dealerScore.textContent = calcScore(dealerCardsArray);
+  dealerScore.textContent = calcScore(dealerCardsArray, 'dealer');
   dealerCurrentScore = dealerScore.textContent;
 }
 
@@ -229,19 +232,66 @@ function randomCard() {
 
 function calcScore(cardsArray) {
   let score = 0;
+  let player = cardsArray[1].classList[2].slice(6, 8);
+  if (player === '-c') player = 'dealer';
+
+  function checkAces(player) {
+    // IF PLAYER HAS ACES COUNTED AS 11 REDUCE SCORE BY 10
+    if (player === '01' && player01AcesInHandCountedAsEleven > 0) {
+      score -= 10;
+      player01AcesInHandCountedAsEleven--;
+    }
+    if (player === '02' && player02AcesInHandCountedAsEleven > 0) {
+      score -= 10;
+      player02AcesInHandCountedAsEleven--;
+    }
+    if (player === 'dealer' && dealerAcesInHandCountedAsEleven > 0) {
+      score -= 10;
+      dealerAcesInHandCountedAsEleven--;
+    }
+  }
 
   for (let i = 0; i < cardsArray.length; i++) {
     let card = cardsArray[i].src;
     let cardValueNum = parseInt(card.slice(28).split('_')[0]);
-    if (cardValueNum > 10) {
-      cardValueNum = 10;
+
+    // IF CARD IS A K Q J COUNT AS 10
+    if (cardValueNum > 10) cardValueNum = 10;
+
+    // IF CARD IS AN ACE
+    if (cardValueNum === 1) {
+      // CHANGE TO DEFAULT AS 11
+      cardValueNum = 11;
+
+      // ADD 1 TO ACES AS 11 COUNT
+      player === '01'
+        ? player01AcesInHandCountedAsEleven++
+        : player === '02'
+        ? player02AcesInHandCountedAsEleven++
+        : dealerAcesInHandCountedAsEleven++;
+
+      // IF USING THE ACE AS AN 11 MAKES THE PLAYER BUST SET CARD TO BE WORTH 1 AND REMOVE 1 FROM THE COUNTED AS 11
+      if (score + cardValueNum > 21) {
+        cardValueNum = 1;
+        player === '01'
+          ? player01AcesInHandCountedAsEleven--
+          : player === '02'
+          ? player02AcesInHandCountedAsEleven--
+          : dealerAcesInHandCountedAsEleven--;
+      }
     }
+
     score += cardValueNum;
   }
+
+  if (score > 21) checkAces(player);
 
   return score;
 }
 
+//  CHECK IF PLAYER HAS ANY ACES COUNTED AS 11 IF BUST
+
+// Adding a new card to the correct players hand
 function addCard(cardsArray, currentDOM, currDiv) {
   let newCard = document.createElement('img');
 
@@ -273,9 +323,10 @@ function addCard(cardsArray, currentDOM, currDiv) {
 function hit(currentScore, cardsArray, card1, card2, currentDOM, currDiv) {
   if (currentScore < 21) {
     const emptyCardIndex = cardsArray.findIndex(
-      (card) => card.src.slice(28).split('_')[0] === '0'
+      card => card.src.slice(28).split('_')[0] === '0'
     );
 
+    // Init first 2 cards being turned over
     if (emptyCardIndex !== -1) {
       if (emptyCardIndex === 0) {
         card1.src = randomCard();
@@ -284,7 +335,6 @@ function hit(currentScore, cardsArray, card1, card2, currentDOM, currDiv) {
         card2.src = randomCard();
         card2.classList.remove('card-back');
       }
-
       emptyCardIndex === 0
         ? (cardsArray[emptyCardIndex].src = card1.src)
         : (cardsArray[emptyCardIndex].src = card2.src);
@@ -328,7 +378,7 @@ async function dealersTurn() {
   }
 
   while (+dealerCurrentScore <= +highestScore) {
-    await new Promise((resolve) => setTimeout(resolve, 700));
+    await new Promise(resolve => setTimeout(resolve, 700));
     hit(
       dealerCurrentScore,
       dealerCardsArray,
@@ -348,6 +398,7 @@ async function dealersTurn() {
       } else if (+dealerCurrentScore > +player01CurrentScore) {
         dealerWins();
       }
+
       // 2 player game
     } else if (noOfPlayers === 2) {
       if (+dealerCurrentScore > 21) {
@@ -373,6 +424,30 @@ async function dealersTurn() {
   }
 }
 
+// function aceCheck() {
+//   console.log(
+//     'activePlayer: ',
+//     activePlayer,
+//     'aces as eleven: '
+//     // acesInHandCountedAsEleven
+//   );
+// }
+
+function checkWinOnePlayer() {
+  // check to see if any aces in hand to stop player going bust
+  // aceCheck();
+
+  // PLAYER 01 BUST AND DEALER WINS
+  if (+player01CurrentScore > 21) {
+    // acesInHandCountedAsEleven = 0;
+    return dealerWins();
+  }
+
+  // player 01 gets 21, dealers turn
+  if (+player01CurrentScore === 21)
+    return dealersTurn(player01Section, player01CurrentScore);
+}
+
 // start up game
 init();
 
@@ -380,6 +455,8 @@ init();
 hitBtn.addEventListener('click', async function () {
   // 1 PLAYER GAME
   if (noOfPlayers === 1 && activePlayer === 1) {
+    checkWinOnePlayer();
+
     hit(
       player01CurrentScore,
       player01CardsArray,
@@ -388,17 +465,12 @@ hitBtn.addEventListener('click', async function () {
       player01Current,
       player01cardDiv
     );
-    player01CurrentScore = player01Current.textContent;
 
-    // PLAYER 01 BUST AND DEALER WINS
-    if (+player01CurrentScore > 21) {
-      dealerWins();
-    }
-    // player 01 gets 21, dealers turn
-    else if (+player01CurrentScore === 21) {
-      dealersTurn(player01Section, player01CurrentScore);
-    }
+    player01CurrentScore = +player01Current.textContent;
+
+    checkWinOnePlayer();
   }
+
   // 2 PLAYER GAME
   else if (noOfPlayers === 2) {
     // PLAYER 01 TURN
@@ -419,6 +491,7 @@ hitBtn.addEventListener('click', async function () {
         player02Section.classList.add('player--active');
       }
     }
+
     // PLAYER 02 TURN
     else if (activePlayer === 2) {
       hit(

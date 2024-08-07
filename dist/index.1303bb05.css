@@ -53,6 +53,7 @@ body {
 .dealer-total {
   justify-content: center;
   align-items: center;
+  margin-bottom: 15px;
   display: flex;
 }
 
